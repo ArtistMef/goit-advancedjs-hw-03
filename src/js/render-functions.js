@@ -4,9 +4,15 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+let lightbox = new SimpleLightbox('.gallery a');
+
 export function renderImages(images) {
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = '';
+
+    if (images.length === 0) {
+        return; 
+    }
 
     const markup = images.map(image => {
         return `
@@ -36,9 +42,9 @@ export function renderImages(images) {
 
     gallery.insertAdjacentHTML('beforeend', markup);
 
-    // Initialize or refresh SimpleLightbox
-    const lightbox = new SimpleLightbox('.gallery a');
     lightbox.refresh();
+
+
 }
 
 export function renderError(message) {

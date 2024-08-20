@@ -21,6 +21,7 @@ searchForm.addEventListener('submit', (event) => {
         .then(images => {
             hideLoadingIndicator();
             if (images.length === 0) {
+                renderImages([]);
                 renderNoResults();
             } else {
                 renderImages(images);
